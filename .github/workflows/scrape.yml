@@ -12,7 +12,7 @@ jobs:
     - name: Install requests-html
       run: python3 -m pip install requests-html
     - name: Fetch latest data
-      run: python3 yoomoney_exchange_rates.py
+      run: python3 yoomoney_exchange_rates.py > rates.txt
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
