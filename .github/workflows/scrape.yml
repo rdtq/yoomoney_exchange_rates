@@ -1,4 +1,6 @@
 on:
+  push:
+  workflow_dispatch:
   schedule:
     - cron:  '0,10,20,30,40,50 * * * *' # every 10 minutes
 name: Run scraping
