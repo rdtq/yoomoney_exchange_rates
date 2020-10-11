@@ -1,0 +1,23 @@
+on:
+  schedule:
+    - cron:  '0,10,20,30,40,50 * * * *' # every 10 minutes
+name: Run scraping
+jobs:
+  scheduled:
+    name: Scrape
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repo
+    - uses: actions/checkout@v2
+    - name: Install requests-html
+    - run: python3 -m pip install requests-html
+    - name: Fetch latest data
+    - run: python3 yoomoney_exchange_rates.py
+    - name: Commit and push if it changed
+    - run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push
