@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 import re
 import json
+import sys
 
 def main():
     session = HTMLSession()
@@ -15,6 +16,8 @@ def main():
         objects = list(filter(lambda o: "currencyCode" in o and "buyRate" in o, objects))
         if objects:
             break
+    if not objects:
+        sys.exit(1)
     print(f"{'CURRENCY':<10} {'BUYRATE':<10} {'SELLRATE':<10}")
     for o in objects:
         exchange_data = json.loads(o)
