@@ -1,6 +1,6 @@
 CURRENCY   BUYRATE    SELLRATE  
 RUB        1          1         
-USD        76.45275   77.99725  
+USD        76.5072    78.0528   
 EUR        89.8128    91.6272   
 BYN        30.36825   30.98175  
 KZT        0.178101   0.181699  
