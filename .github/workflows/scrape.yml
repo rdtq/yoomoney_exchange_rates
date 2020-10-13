@@ -12,8 +12,6 @@ jobs:
     - name: Checkout this repo
       uses: actions/checkout@v2
     - uses: actions/setup-python@v2
-    - name: Install requests-html
-      run: python3 -m pip install requests-html
     - name: Fetch latest data
       run: out=$(python3 yoomoney_exchange_rates.py) && echo "$out" > rates.txt
     - name: Commit and push if it changed
