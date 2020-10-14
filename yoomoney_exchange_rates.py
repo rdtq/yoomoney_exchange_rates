@@ -13,7 +13,6 @@ def main():
     objects = list(filter(lambda o: "currencyCode" in o and "buyRate" in o, objects))
     if not objects:
         sys.exit(1)
-    print(f"{'CURRENCY':<10} {'BUYRATE':<10} {'SELLRATE':<10}")
     for o in objects:
         exchange_data = json.loads(o)
         with open(f"{exchange_data['currencyCode']}.txt", "a") as write_file:
