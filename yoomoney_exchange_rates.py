@@ -2,6 +2,7 @@ import urllib.request
 import re
 import json
 import sys
+from datetime import datetime
 
 def main():
     with urllib.request.urlopen("https://money.yandex.ru/account/exchange-rates") as f:
@@ -15,7 +16,8 @@ def main():
     print(f"{'CURRENCY':<10} {'BUYRATE':<10} {'SELLRATE':<10}")
     for o in objects:
         exchange_data = json.loads(o)
-        print(f"{exchange_data['currencyCode']:<10} {exchange_data['buyRate']:<10} {exchange_data['sellRate']:<10}")
+        with open(f"{exchange_data['currencyCode']}.txt", "a") as write_file:
+            write_file.write(f"{datetime.utcnow().isoformat()} {exchange_data['buyRate']} {exchange_data['sellRate']}\n")
 
 
 
