@@ -5,7 +5,7 @@ import sys
 from datetime import datetime
 
 def main():
-    with urllib.request.urlopen("https://money.yandex.ru/account/exchange-rates") as f:
+    with urllib.request.urlopen("https://yoomoney.ru/account/exchange-rates") as f:
         text = f.read().decode("utf8")
     # find possible js objects: {"currencyCode": "USD", ...}
     objects = re.findall("({[^{]+?})", text)
